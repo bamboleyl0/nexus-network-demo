@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOLTAGE — Electronics, components and everyday tech.</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><div class="wrap"><header class="top"><a class="logo" href="/site/voltage">VOLTAGE</a>
+<nav class="nav"><a href="#"> Shop </a><a href="#"> Deals </a><a href="#"> Components </a><a href="#"> Orders </a></nav>
+<div class="status"><span class="dot"></span> Operational</div></header>
+<section class="hero"><span class="pill">Store</span><h1>VOLTAGE</h1><p>Electronics, components and everyday tech.</p></section>
+<section class="grid"><div class="card"><span class="pill">Shop</span><h3>Store 01</h3><p class="muted">Electronics, components and everyday tech. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Deals</span><h3>Store 02</h3><p class="muted">Electronics, components and everyday tech. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Components</span><h3>Store 03</h3><p class="muted">Electronics, components and everyday tech. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Orders</span><h3>Store 04</h3><p class="muted">Electronics, components and everyday tech. Sample content for the demonstration environment.</p></div></section>
+<section class="card" style="margin-top:18px"><div class="tag">Service status</div>
+<div style="display:flex;justify-content:space-between;align-items:end"><div><div class="big" id="load">12%</div><div class="muted">simulated system load</div></div><div class="muted" id="state">ONLINE</div></div>
+<div class="bar" style="margin-top:14px"><div class="fill" id="fill"></div></div></section>
+<footer>VOLTAGE © 2026 — fictional demonstration service.</footer></div>
+<script>
+async function update(){
+  try {
+    const r=await fetch('/api/status/voltage'); const d=await r.json();
+    document.getElementById('load').textContent=d.load+'%';
+    document.getElementById('fill').style.width=d.load+'%';
+    document.getElementById('state').textContent=d.state;
+    document.body.dataset.state=d.state;
+  } catch(e) {}
+}
+update(); setInterval(update,1000);
+</script></body></html>

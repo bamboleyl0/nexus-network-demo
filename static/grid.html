@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRID — Games, servers and the people playing them.</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><div class="wrap"><header class="top"><a class="logo" href="/site/grid">GRID</a>
+<nav class="nav"><a href="#"> Discover </a><a href="#"> Servers </a><a href="#"> Rankings </a><a href="#"> Community </a></nav>
+<div class="status"><span class="dot"></span> Operational</div></header>
+<section class="hero"><span class="pill">Gaming</span><h1>GRID</h1><p>Games, servers and the people playing them.</p></section>
+<section class="grid"><div class="card"><span class="pill">Discover</span><h3>Gaming 01</h3><p class="muted">Games, servers and the people playing them. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Servers</span><h3>Gaming 02</h3><p class="muted">Games, servers and the people playing them. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Rankings</span><h3>Gaming 03</h3><p class="muted">Games, servers and the people playing them. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Community</span><h3>Gaming 04</h3><p class="muted">Games, servers and the people playing them. Sample content for the demonstration environment.</p></div></section>
+<section class="card" style="margin-top:18px"><div class="tag">Service status</div>
+<div style="display:flex;justify-content:space-between;align-items:end"><div><div class="big" id="load">12%</div><div class="muted">simulated system load</div></div><div class="muted" id="state">ONLINE</div></div>
+<div class="bar" style="margin-top:14px"><div class="fill" id="fill"></div></div></section>
+<footer>GRID © 2026 — fictional demonstration service.</footer></div>
+<script>
+async function update(){
+  try {
+    const r=await fetch('/api/status/grid'); const d=await r.json();
+    document.getElementById('load').textContent=d.load+'%';
+    document.getElementById('fill').style.width=d.load+'%';
+    document.getElementById('state').textContent=d.state;
+    document.body.dataset.state=d.state;
+  } catch(e) {}
+}
+update(); setInterval(update,1000);
+</script></body></html>

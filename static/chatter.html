@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHATTER — Communities built around conversations.</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><div class="wrap"><header class="top"><a class="logo" href="/site/chatter">CHATTER</a>
+<nav class="nav"><a href="#"> Topics </a><a href="#"> Recent </a><a href="#"> Members </a><a href="#"> Rules </a></nav>
+<div class="status"><span class="dot"></span> Operational</div></header>
+<section class="hero"><span class="pill">Forum</span><h1>CHATTER</h1><p>Communities built around conversations.</p></section>
+<section class="grid"><div class="card"><span class="pill">Topics</span><h3>Forum 01</h3><p class="muted">Communities built around conversations. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Recent</span><h3>Forum 02</h3><p class="muted">Communities built around conversations. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Members</span><h3>Forum 03</h3><p class="muted">Communities built around conversations. Sample content for the demonstration environment.</p></div><div class="card"><span class="pill">Rules</span><h3>Forum 04</h3><p class="muted">Communities built around conversations. Sample content for the demonstration environment.</p></div></section>
+<section class="card" style="margin-top:18px"><div class="tag">Service status</div>
+<div style="display:flex;justify-content:space-between;align-items:end"><div><div class="big" id="load">12%</div><div class="muted">simulated system load</div></div><div class="muted" id="state">ONLINE</div></div>
+<div class="bar" style="margin-top:14px"><div class="fill" id="fill"></div></div></section>
+<footer>CHATTER © 2026 — fictional demonstration service.</footer></div>
+<script>
+async function update(){
+  try {
+    const r=await fetch('/api/status/chatter'); const d=await r.json();
+    document.getElementById('load').textContent=d.load+'%';
+    document.getElementById('fill').style.width=d.load+'%';
+    document.getElementById('state').textContent=d.state;
+    document.body.dataset.state=d.state;
+  } catch(e) {}
+}
+update(); setInterval(update,1000);
+</script></body></html>

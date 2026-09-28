@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STATUS — Infrastructure Monitoring</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><div class="wrap"><header class="top"><div class="logo">STATUS</div><nav class="nav"><a>Overview</a><a>Services</a><a>Incidents</a><a>History</a></nav><div class="status"><span class="dot"></span> All systems operational</div></header>
+<section class="hero"><span class="pill">MONITORING</span><h1>System status</h1><p>Live-looking telemetry for the fictional NEXUS Network demonstration.</p></section>
+<div class="grid" id="services"></div>
+<footer>STATUS is a fictional service used by this demonstration project.</footer></div>
+<script>
+async function update(){const r=await fetch('/api/all');const d=await r.json();
+document.getElementById('services').innerHTML=Object.entries(d).map(([k,v])=>`<div class="card"><div class="status"><span class="dot"></span>${v.name}</div><h3>${v.state}</h3><div class="muted">Load ${v.load}% · ${v.connections} connections</div><div class="bar" style="margin-top:14px"><div class="fill" style="width:${v.load}%"></div></div></div>`).join('')}
+update();setInterval(update,1000);
+</script></body></html>
